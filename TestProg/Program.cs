@@ -13,11 +13,7 @@ namespace TestProg
     {
         private static async Task handleRequest(HttpListenerContext ctx)
         {
-            ctx.Response.ContentType = "text/plain";
-            var os = ctx.Response.OutputStream;
-            var bytes = Encoding.ASCII.GetBytes("Hello World");
-            await os.WriteAsync(bytes, 0, bytes.Length);
-            ctx.Response.Close();
+            RequestResolver.Resolve (ctx,null);
         }
 
         private static async Task httpServer()
